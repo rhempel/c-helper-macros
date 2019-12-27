@@ -11,7 +11,7 @@
  * ----------------------------------------------------------------------------
  * NOTE WELL that this file may be included multiple times - this allows you
  * to set the trace level #define DBGLOG_LEVEL x
- * 
+ *
  * To update which of the DBGLOG macros are compiled in, you must redefine the
  * DBGLOG_LEVEL macro and the inlcude the dbglog.h file again, like this:
  *
@@ -54,45 +54,45 @@
 #endif
 
 #ifndef DBGLOG_FUNCTION
-#  define DBGLOG_FUNCTION printf
+#  define DBGLOG_FUNCTION fprintf
 #endif
 
 /* ------------------------------------------------------------------------- */
 
 #if DBGLOG_LEVEL >= 6
-#  define DBGLOG_TRACE(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_TRACE(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_TRACE(format, ...)
 #endif
 
 #if DBGLOG_LEVEL >= 5
-#  define DBGLOG_DEBUG(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_DEBUG(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_DEBUG(format, ...)
 #endif
 
 #if DBGLOG_LEVEL >= 4
-#  define DBGLOG_CRITICAL(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_CRITICAL(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_CRITICAL(format, ...)
 #endif
 
 #if DBGLOG_LEVEL >= 3
-#  define DBGLOG_ERROR(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_ERROR(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_ERROR(format, ...)
 #endif
 
 #if DBGLOG_LEVEL >= 2
-#  define DBGLOG_WARNING(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_WARNING(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_WARNING(format, ...)
 #endif
 
 #if DBGLOG_LEVEL >= 1
-#  define DBGLOG_INFO(format, ...) DBGLOG_FUNCTION(format, ## __VA_ARGS__)
+#  define DBGLOG_INFO(format, ...) DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__); fflush(stdout);
 #else
 #  define DBGLOG_INFO(format, ...)
 #endif
 
-#define DBGLOG_FORCE(force, format, ...) {if(force) {DBGLOG_FUNCTION(format, ## __VA_ARGS__);}}
+#define DBGLOG_FORCE(force, format, ...) {if(force) {DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__);fflush(stdout);}}
