@@ -41,6 +41,16 @@
  * ----------------------------------------------------------------------------
  */
 
+//#ifndef __DBGLOG_H__
+//#define __DBGLOG_H__
+#define DBGLOG_LEVEL_TRACE (6)
+#define DBGLOG_LEVEL_DEBUG (5)
+#define DBGLOG_LEVEL_CRITICAL (4)
+#define DBGLOG_LEVEL_ERROR (3)
+#define DBGLOG_LEVEL_WARNING (2)
+#define DBGLOG_LEVEL_INFO (1)
+#define DBGLOG_LEVEL_FORCE (0)
+//#else
 #undef DBGLOG_TRACE
 #undef DBGLOG_DEBUG
 #undef DBGLOG_CRITICAL
@@ -96,3 +106,4 @@
 #endif
 
 #define DBGLOG_FORCE(force, format, ...) {if(force) {DBGLOG_FUNCTION(stdout, format, ## __VA_ARGS__);fflush(stdout);}}
+//#endif /* __DBGLOG_H__ */
